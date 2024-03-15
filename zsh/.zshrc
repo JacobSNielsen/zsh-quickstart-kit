@@ -874,7 +874,36 @@ function zqs() {
 
   esac
 }
+export PATH=$PATH:/Users/jsn/.spicetify
 
 if [[ -f ~/.zqs-zprof-enabled ]]; then
   zprof
 fi
+
+# bun completions
+[ -s "/Users/jsn/.bun/_bun" ] && source "/Users/jsn/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/jsn/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/jsn/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/jsn/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/jsn/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export PATH=/Users/jsn/miniconda3/bin:/Users/jsn/miniconda3/condabin:/opt/homebrew/opt/php@8.1/sbin:/opt/homebrew/opt/php@8.1/bin:/Users/jsn/.bun/bin:/Users/jsn/.rd/bin:/Users/jsn/Library/pnpm:/Users/jsn/.nvm/versions/node/v20.9.0/bin:/Users/jsn/.pyenv/shims:/Users/jsn/.pip-apps/bin:/Users/jsn/.yarn/bin:/Users/jsn/.config/yarn/global/node_modules/.bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Users/jsn/.cargo/bin:/Users/jsn/.orbstack/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Users/jsn/.zgenom/unixorn/jpb.zshplugin/___/bin:/Users/jsn/.zgenom/unixorn/warhol.plugin.zsh/___/bin:/Users/jsn/.zgenom/unixorn/tumult.plugin.zsh/___/bin:/Users/jsn/.zgenom/eventi/noreallyjustfuckingstopalready/___:/Users/jsn/.zgenom/unixorn/git-extra-commands/___/bin:/Users/jsn/.zgenom/unixorn/fzf-zsh-plugin/___/bin:/Users/jsn/.fzf/bin:/Users/jsn/.zgenom/unixorn/bitbucket-git-helpers.plugin.zsh/___/bin:/Users/jsn/.zgenom/skx/sysadmin-util/___:/Users/jsn/.zgenom/StackExchange/blackbox/___/bin:/Users/jsn/.spicetify:/Users/jsn/bin
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
