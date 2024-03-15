@@ -135,7 +135,10 @@ alias tartvzf='tar tvzf'
 alias tarxvf='tar xvf'
 alias tarxvjf='tar xvjf'
 
-# Deal with various stupidities.
+alias nici='npm install && composer install'
+alias nicib='npm install && composer install && npm run build'
+alias nicid='npm install && composer install && npm run dev'
+alias nicip='npm install && composer install && npm run ssr'
 
 # Thanks so much for breaking ldapsearch, fink
 if [ -x /sw/bin/ldapsearch ];then
