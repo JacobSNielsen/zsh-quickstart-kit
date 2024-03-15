@@ -147,6 +147,32 @@ function htmime() {
   print $mime
 }
 
+function rune2e() {
+    # Check if .env file exists, stop if not and print error message
+    if [ ! -f .env ]; then
+        echo ".env file not found"
+        return 1
+    fi
+    # Replace DB_DATABASE in .env file with website-test
+    sed -i '' 's/DB_DATABASE=.*/DB_DATABASE=website-test/' .env
+
+    #if DB_DATABASE=website-test in .env file then run migration and tests
+    if grep -q "DB_DATABASE=website-test" .env; then
+        npm install
+        composer install
+        php artisan migrate:fresh --seed
+        npm run build:ssr
+        php artisan inertia:start-ssr &
+        sleep 1
+        npx playwright test
+        kill $!
+    else
+        echo "DB_DATABASE=website-test not found in .env file"
+    fi
+
+    sed -i '' 's/DB_DATABASE=.*/DB_DATABASE=website/' .env
+}
+
 # Start an HTTP server from a directory, optionally specifying the port
 function httpserver() {
   local port="${1:-8000}";
