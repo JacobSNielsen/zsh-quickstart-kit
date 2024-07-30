@@ -135,6 +135,20 @@ alias tartvzf='tar tvzf'
 alias tarxvf='tar xvf'
 alias tarxvjf='tar xvjf'
 
+alias ni='npm install'
+alias ci='composer install'
+
+alias nici='ni && ci'
+alias nicid='ni && ci && npm run dev'
+alias nicip='ni && ci && npm run ssr'
+alias rundev="nicid"
+alias runprod="nicip"
+
+alias pa='php artisan'
+alias pacc='pa cache:clear'
+alias pabr="pa backup:restore && pacc"
+alias pamfs="pa migrate:fresh --seed && pacc"
+
 # Deal with various stupidities.
 
 # Thanks so much for breaking ldapsearch, fink

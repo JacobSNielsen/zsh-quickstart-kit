@@ -1,4 +1,11 @@
-# Copyright 2006-2024 Joseph Block <jpb@unixorn.net>
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Copyright 2006-2023 Joseph Block <jpb@unixorn.net>
 #
 # BSD licensed, see LICENSE.txt
 #
@@ -35,23 +42,7 @@ function zqs-debug() {
   fi
 }
 
-# Fix weirdness with intellij
-if [[ -z "${INTELLIJ_ENVIRONMENT_READER}" ]]; then
-  export POWERLEVEL9K_INSTANT_PROMPT='quiet'
-fi
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# Valid font modes:
-# flat, awesome-patched, awesome-fontconfig, nerdfont-complete, nerdfont-fontconfig
-if [[ -r ~/.powerlevel9k_font_mode ]]; then
-  POWERLEVEL9K_MODE=$(head -1 ~/.powerlevel9k_font_mode)
-fi
 
 # Unset COMPLETION_WAITING_DOTS in a file in ~/.zshrc.d if you want red dots to be displayed while waiting for completion
 export COMPLETION_WAITING_DOTS="true"
@@ -145,11 +136,6 @@ function _zqs-update-stale-settings-files() {
     rm -f ~/.zqs-additional-plugins
     echo "Plugins from .zqs-additional-plugins were moved to .zshrc.add-plugins.d/0000-transferred-plugins with a format change"
   fi
-  if [[ -f ~/.zsh-quickstart-use-bullet-train ]]; then
-    _zqs-set-setting bullet-train true
-    rm -f ~/.zsh-quickstart-use-bullet-train
-    echo "Converted old ~/.zsh-quickstart-use-bullet-train to new settings system"
-  fi
   if [[ -f ~/.zsh-quickstart-no-omz ]]; then
     _zqs-set-setting load-omz-plugins false
     rm -f ~/.zsh-quickstart-no-omz
@@ -170,19 +156,7 @@ function _zqs-update-stale-settings-files() {
 
 _zqs-update-stale-settings-files
 
-# Add some quickstart feature toggle functions
-function zsh-quickstart-select-bullet-train() {
-  _zqs-set-setting bullet-train true
-  _zqs-set-setting powerlevel10k false
-  _zqs-trigger-init-rebuild
-}
 
-function zsh-quickstart-select-powerlevel10k() {
-  rm -f ~/.zsh-quickstart-use-bullet-train
-  _zqs-set-setting powerlevel10k true
-  _zqs-set-setting bullet-train false
-  _zqs-trigger-init-rebuild
-}
 
 function zsh-quickstart-disable-1password-ssh-agent() {
   _zqs-set-setting use-1password-ssh-agent false
@@ -762,12 +736,6 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
 # Load iTerm shell integrations if found.
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# To customize your prompt, run `p10k configure` or edit ~/.p10k.zsh.
-if [[ ! -f ~/.p10k.zsh ]]; then
-  echo "Run p10k configure or edit ~/.p10k.zsh to configure your prompt"
-else
-  source ~/.p10k.zsh
-fi
 
 if [[ $(_zqs-get-setting list-ssh-keys true) == 'true' ]]; then
   echo
@@ -973,3 +941,27 @@ function zqs() {
 if [[ -f ~/.zqs-zprof-enabled ]]; then
   zprof
 fi
+
+# Herd injected PHP 8.3 configuration.
+export HERD_PHP_83_INI_SCAN_DIR="/Users/jsn/Library/Application Support/Herd/config/php/83/"
+
+
+# Herd injected PHP binary.
+export PATH="/Users/jsn/Library/Application Support/Herd/bin/":$PATH
+
+# fnm
+export PATH="/Users/jsn/Library/Application Support/fnm:$PATH"
+eval "`fnm env`"
+
+# bun completions
+[ -s "/Users/jsn/.bun/_bun" ] && source "/Users/jsn/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
