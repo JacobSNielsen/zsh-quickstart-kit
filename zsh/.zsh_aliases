@@ -148,6 +148,9 @@ alias pa='php artisan'
 alias pacc='pa cache:clear'
 alias pabr="pa backup:restore && pacc"
 alias pamfs="pa migrate:fresh --seed && pacc"
+alias pats="pa typescript:transform"
+alias paci="pa components:import"
+alias pacp="pa components:publish"
 
 # Deal with various stupidities.
 
