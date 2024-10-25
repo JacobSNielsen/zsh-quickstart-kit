@@ -966,3 +966,15 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
+
+# Google Cloud SDK
+export CLOUDSDK_PYTHON=/Users/jsn/.pyenv/versions/3.10.4/bin/python3
+
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jsn/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jsn/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jsn/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jsn/google-cloud-sdk/completion.zsh.inc'; fi
