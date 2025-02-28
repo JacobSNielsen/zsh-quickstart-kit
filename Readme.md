@@ -43,8 +43,8 @@
       - [zqs-enable-ssh-key-loading](#zqs-enable-ssh-key-loading)
       - [zqs-disable-zmv-autoloading](#zqs-disable-zmv-autoloading)
       - [zqs-enable-zmv-autoloading](#zqs-enable-zmv-autoloading)
-      - [`zqs-disable-zsh-profiling](#zqs-disable-zsh-profiling)
-      - [`zqs-enable-zsh-profiling](#zqs-enable-zsh-profiling)
+      - [zqs-disable-zsh-profiling](#zqs-disable-zsh-profiling)
+      - [zqs-enable-zsh-profiling](#zqs-enable-zsh-profiling)
       - [zqs selfupdate](#zqs-selfupdate)
       - [zqs update](#zqs-update)
       - [zqs update-plugins](#zqs-update-plugins)
@@ -323,11 +323,11 @@ Don't run `autoload -U zmv` when creating a new session.
 
 Run `autoload -U zmv` when creating a new session. This is the default behavior.
 
-##### `zqs-disable-zsh-profiling
+##### zqs-disable-zsh-profiling
 
 Disable ZSH's profiler. This is the default.
 
-##### `zqs-enable-zsh-profiling
+##### zqs-enable-zsh-profiling
 
 Turn on ZSH's profiler
 
@@ -512,7 +512,7 @@ Then you can tag working versions, pull from upstream for testing, and if the up
 
 ### Vim
 
-If you're using vim, [spf13](http://vim.spf13.com/) is an excellent starter configuration and plugin collection.
+If you're using vim, [spf13](https://github.com/spf13/spf13-vim) is an excellent starter configuration and plugin collection.
 
 ## Thanks
 
