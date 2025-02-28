@@ -39,31 +39,31 @@ export CVS_RSH=ssh
 alias historysummary="history | awk '{a[\$2]++} END{for(i in a){printf \"%5d\t%s\n\",a[i],i}}' | sort -rn | head"
 
 if [ -x /bin/vim ]; then
-    alias vi="/bin/vim"
-    alias vim="/bin/vim"
-    export EDITOR="/bin/vim"
+  alias vi="/bin/vim"
+  alias vim="/bin/vim"
+  export EDITOR="/bin/vim"
 fi
 
 if [ -x /usr/bin/vim ]; then
-    alias vi="/usr/bin/vim"
-    alias vim="/usr/bin/vim"
-    export EDITOR="/usr/bin/vim"
+  alias vi="/usr/bin/vim"
+  alias vim="/usr/bin/vim"
+  export EDITOR="/usr/bin/vim"
 fi
 
 # MacPorts has a newer vim than Apple ships
 if [ -x /opt/local/bin/vim ]; then
-    alias vim="/opt/local/bin/vim"
-    alias vi="/opt/local/bin/vim"
-    export EDITOR="/opt/local/bin/vim"
+  alias vim="/opt/local/bin/vim"
+  alias vi="/opt/local/bin/vim"
+  export EDITOR="/opt/local/bin/vim"
 fi
 
 # So does brew
 if can_haz brew; then
   brew_prefix="$(brew --prefix)/bin"
   if [[ -x "$brew_prefix/vim" ]]; then
-      alias vim="$brew_prefix/vim"
-      alias vi="$brew_prefix/vim"
-      export EDITOR="$brew_prefix/vim"
+    alias vim="$brew_prefix/vim"
+    alias vi="$brew_prefix/vim"
+    export EDITOR="$brew_prefix/vim"
   fi
   unset brew_prefix
 fi
@@ -146,7 +146,7 @@ alias runprod="nicip"
 
 alias pa='php artisan'
 alias pacc='pa cache:clear'
-alias pabr="pa backup:restore && pacc"
+alias pabr="pa backup:restore --no-interaction && pacc"
 alias pamfs="pa migrate:fresh --seed && pacc"
 alias pats="pa typescript:transform"
 alias paci="pa components:import"
@@ -155,7 +155,7 @@ alias pacp="pa components:publish"
 # Deal with various stupidities.
 
 # Thanks so much for breaking ldapsearch, fink
-if [ -x /sw/bin/ldapsearch ];then
+if [ -x /sw/bin/ldapsearch ]; then
   # At least the stale version Apple ships actually works.
   alias ldapsearch=/usr/bin/ldapsearch
 fi

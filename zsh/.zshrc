@@ -949,10 +949,6 @@ export HERD_PHP_83_INI_SCAN_DIR="/Users/jsn/Library/Application Support/Herd/con
 # Herd injected PHP binary.
 export PATH="/Users/jsn/Library/Application Support/Herd/bin/":$PATH
 
-# fnm
-export PATH="/Users/jsn/Library/Application Support/fnm:$PATH"
-eval "`fnm env`"
-
 # bun completions
 [ -s "/Users/jsn/.bun/_bun" ] && source "/Users/jsn/.bun/_bun"
 
@@ -978,3 +974,17 @@ if [ -f '/Users/jsn/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jsn/google-
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/jsn/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jsn/google-cloud-sdk/completion.zsh.inc'; fi
+
+# fnm
+FNM_PATH="/Users/jsn/Library/Application Support/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/Users/jsn/Library/Application Support/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
+# Herd injected PHP 8.2 configuration.
+export HERD_PHP_82_INI_SCAN_DIR="/Users/jsn/Library/Application Support/Herd/config/php/82/"
+
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+
